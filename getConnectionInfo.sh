@@ -24,14 +24,13 @@ done
 function checkInput {
     while true; do
     read userInput
-        for data in $dataList; do
-            if [ "$data" == "$userInput" ]; then
-                process=$userInput
-                break
-            else
-                echo -e "Invalid input $userInput. Please enter valid data."
-            fi
-        done
+        if [[ "$dataList" == *"$userInput"* ]]; then
+            process=$userInput
+            break
+        else
+            echo -e "Invalid input $userInput. Please enter valid data."
+            break
+        fi
     if ! [ -z "$process" ]; then
         break
     fi
